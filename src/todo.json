@@ -1,0 +1,22 @@
+{
+    "todos":[
+        {
+            "title":"task 1",
+            "responsible":"Mark",
+            "description":"lorem",
+            "priority":"low"
+        },
+        {
+            "title":"task 2",
+            "responsible":"Rei",
+            "description":"lorem",
+            "priority":"medium"
+        },
+        {
+            "title":"task 3",
+            "responsible":"Shinji",
+            "description":"lorem",
+            "priority":"high"
+        }
+    ]
+}
