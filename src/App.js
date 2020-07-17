@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import { todos } from './todo.json';
 import TodoForm from './components/TodoForm';
-
+import Todo from './components/Todo'
 class App extends Component {
   constructor() {
     super();
@@ -12,16 +12,16 @@ class App extends Component {
       todos
     }
     this.handleAddToDo = this.handleAddToDo.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleAddToDo(todo) {
     this.setState({
       todos: [...this.state.todos, todo]
-    
     })
   }
-  handleRemove(index){
-    console.log(index);
+  
+  handleRemove(index) {
     this.setState({
       todos:this.state.todos.filter((e,i)=>{
         return i!==index  
@@ -31,33 +31,14 @@ class App extends Component {
   render() {
     const todos = this.state.todos.map((todo, i) => {
       return (
-        <div className="col-md-4" key={i}>
-          <div className="card mt-4">
-            <div className="card-header">
-              <h3>{todo.title}</h3>
-              <span className="badge badgepill badge-danger ml-2">{todo.priority}</span>
-            </div>
-            <div className="card-body">
-              <p>{todo.description}</p>
-              <p><mark>{todo.responsible}</mark></p>
-            </div>
-            <div className="card-footer">
-              <button className="btn btn-danger"
-              onClick={this.handleRemove.bind(this,i)}>
-                delete
-              </button>
-            </div>
-          </div>
-        </div>
-
-
-      )
+        <Todo todo={todo}  key={i} index={i} onRemove={this.handleRemove} />
+      ) 
     })
     return (
       <div className="App">
         <nav className="navbar navbar-dark bg-dark">
           <a href="#" className="text-white ">tasks
-           <span className="badge badge-pill badge-light ml-2">{this.state.todos.length}</span>
+            <span className="badge badge-pill badge-light ml-2">{this.state.todos.length}</span>
           </a>
 
         </nav>

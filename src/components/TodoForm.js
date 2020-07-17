@@ -59,7 +59,7 @@ class TodoForm extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary">
                         Save
-          </button>
+                    </button>
                 </form>
             </div>
         )
