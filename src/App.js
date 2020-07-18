@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 
 import './App.css';
-import { todos } from './todo.json';
 import TodoForm from './components/TodoForm';
 import Todo from './components/Todo'
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos
+      todos: []
     }
     this.handleAddToDo = this.handleAddToDo.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
   }
 
   handleAddToDo(todo) {
+    const listToDo = this.state.todos.concat(todo)
     this.setState({
-      todos: [...this.state.todos, todo]
+      todos: listToDo
     })
   }
   
@@ -38,7 +38,9 @@ class App extends Component {
       <div className="App">
         <nav className="navbar navbar-dark bg-dark">
           <a href="#" className="text-white ">tasks
-            <span className="badge badge-pill badge-light ml-2">{this.state.todos.length}</span>
+            {this.state.todos && (
+              <span className="badge badge-pill badge-light ml-2">{this.state.todos.length}</span>
+            )}
           </a>
 
         </nav>
@@ -49,7 +51,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
               <TodoForm onAddToDo={this.handleAddToDo}></TodoForm>
             </div>
-            {todos}
+            {this.state.todos && todos}
           </div>
         </div>
 
